@@ -13,3 +13,7 @@ const o = [
 console.log(o);
 const [i, p] = o;
 console.log(i, p);
+
+// same as [k]
+const k = o[0];
+console.log(k);
