@@ -32,3 +32,67 @@ for (let i = 0; i <= array.length; i++) {
   }
 }
 console.log(max);
+
+///////////////
+//static difference
+
+class PersonCI {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // Instance methods
+  // Method will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+  // greet = function () {
+  //   console.log(`Hey ${this.firstName}`);
+  // };
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(" ")) this._fullName = name;
+    else alert(`${name} is not Full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey(fullName) {
+    console.log(`Hey there 👏`);
+    console.log(fullName);
+  }
+}
+const jessica = new PersonCI("Jessica Davis", 1996);
+jessica.calcAge(); //instanceはnew -を定義しないと使えない
+
+PersonCI.hey("jessica"); // static はnew- を定義しなくても呼び出せる  also can take argument
+// PersonCI.calcAge();
+
+// about this
+//let can not be window object
+// let width = 600;
+//var become window object
+var width = 600;
+
+var shape = { width: 300 };
+
+var showWidth = function () {
+  //this indicate window object if this is in normal function
+  console.log(this.width);
+  //if this is in object it indicate object
+};
+
+showWidth();
