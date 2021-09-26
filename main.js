@@ -25,7 +25,6 @@ const array = [1, 5, 13, 33, 66, 56];
 let max = array[0];
 for (let i = 0; i <= array.length; i++) {
   if (max < array[i]) {
-    // max = array[i];
     max = array[i];
     //   } else {
     //     console.log(max);
@@ -96,3 +95,30 @@ var showWidth = function () {
 };
 
 showWidth();
+
+// Without use strict
+function a() {
+  console.log("from a(): ", this);
+  console.log(this === window);
+}
+a();
+// it will show window
+//with strict mode it will undefined
+
+// reduce method
+let number = [1, 2, 3];
+const acc = number.reduce((ac, cu) => {
+  return ac + cu;
+});
+console.log(acc);
+
+// setTimeout if you want use function which is required argument inside it
+const a = function (coin) {
+  if (coin === 1) console.log("1yes");
+  if (coin === 2) console.log("yes");
+  if (coin === 3) console.log("3yes");
+};
+
+const b = setTimeout(function () {
+  a(3);
+}, 2000);
