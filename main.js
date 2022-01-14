@@ -16,7 +16,7 @@ console.log(o);
 const [i, p] = o;
 console.log(i, p);
 
-// same as [k]
+// same as const [i] = o
 const k = o[0];
 console.log(k);
 
@@ -122,3 +122,47 @@ const a = function (coin) {
 const b = setTimeout(function () {
   a(3);
 }, 2000);
+
+// Count how may keys in Object and use Object.entries to use key and value
+
+const setupTags = (objects) => {
+  const allTags = {};
+
+  objects.forEach((object) => {
+    object.content.tags.forEach((key) => {
+      if (allTags[key]) {
+        allTags[key] += 1;
+      } else {
+        allTags[key] = 1;
+      }
+    });
+  });
+  // console.log(allTags)
+  const newTags = Object.entries(allTags).sort((a, b) => {
+    const [firstTag] = a;
+    const [secondTag] = b;
+    // console.log(firstTag, secondTag)
+    return firstTag.localeCompare(secondTag);
+  });
+
+  return newTags;
+};
+
+///////////////////////
+// function scope
+const test = () => {
+  greet();
+};
+
+// will not work
+// test();
+//greet()
+
+const greet = () => {
+  console.log("hello");
+};
+
+// will work
+test();
+
+// you can call later function inside up function and call that function below later function
